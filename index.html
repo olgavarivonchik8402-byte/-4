@@ -706,7 +706,7 @@ body{
 
   <!-- FINALE -->
   <section class="screen" id="screen-finale">
-    <video class="finale-video" src="finale-video.mp4" playsinline autoplay loop muted></video>
+    <video class="finale-video" id="finaleVideo" src="finale-video.mp4" playsinline loop></video>
     <div class="kicker">МИССИЯ ВЫПОЛНЕНА</div>
     <h1 class="title-main display" id="finaleTitle">ТЫ —<span>КОРОЛЬ ПОП!</span></h1>
     <p class="finale-msg" id="finaleMsg"></p>
@@ -1850,6 +1850,10 @@ function finishQuest(){
   document.getElementById('finaleMsg').textContent = CONFIG.finalMessage;
   showScreen('screen-finale');
   launchConfetti();
+  const finaleVideo = document.getElementById('finaleVideo');
+  finaleVideo.muted = false;
+  finaleVideo.currentTime = 0;
+  finaleVideo.play().catch(()=>{});
 }
 
 function restart(){
